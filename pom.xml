@@ -9,6 +9,33 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <name>JUnit 5 FormattedSource (parent)</name>
+    <description>Allows defining JUnit 5 ParameterizedTest cases using a human-readable format</description>
+    <url>https://github.com/mikemybytes/junit5-formatted-source</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/mikemybytes/junit5-formatted-source/blob/main/LICENSE.md</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Mike Kowalski</name>
+            <email>mike [at] mikemybytes.com</email>
+            <organization>mikemybytes</organization>
+            <organizationUrl>https://mikemybytes.com/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:mikemybytes/junit5-formatted-source.git</connection>
+        <developerConnection>scm:git:ssh://github.com:mikemybytes/junit5-formatted-source.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/mikemybytes/junit5-formatted-source</url>
+    </scm>
+
     <modules>
         <module>junit5-formatted-source</module>
         <module>junit5-formatted-source-tests</module>
