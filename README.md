@@ -137,7 +137,7 @@ Test case definition (input) can be defined as a list (array to be precise) of `
 
 Optionally, argument values can be surrounded by the `quoteCharacter` (default: single quote) to improve readability.
 
-You can easily combine `@FormattedSourceTest` and `@FormattedSource` with other standard Junit 5 annotations like 
+You can easily combine `@FormattedSourceTest` and `@FormattedSource` with other standard JUnit 5 annotations like 
 `@DisplayName` or `@Order`. Also, both annotations support the [implicit argument conversion](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion).
 
 ## Limitations
