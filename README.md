@@ -1,4 +1,4 @@
-# junit5-formatted-source
+# JUnit 5 FormattedSource
 
 This library extends [JUnit 5](https://github.com/junit-team/junit5) with a new way of writing [parameterized tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests).
 It allows defining test case arguments in a human-readable way, following a user-defined format. Additionally, it automatically
@@ -6,6 +6,8 @@ takes care of the test case name, so the input definition is also what will be p
 
 ```java
 class CalculatorTest {
+    
+    private final Calculator calculator = new Calculator();
 
     @FormattedSourceTest(format = "{0} + {1} = {2}", lines = {
             "1 + 2 = 3",
@@ -25,13 +27,13 @@ calculatesSum(int, int, int) ✔
 └─ 3 + 4 = 7 ✔
 ```
 
-Of course, `junit5-formatted-source` can do even more!
+Of course, _JUnit 5 FormattedSource_ can do even more!
 
 ## Installing
 
 Requirements:
 - Java 11+
-- JUnit 5.8.2+
+- JUnit 5.8.0+
 
 Maven/Gradle artifacts: coming soon!
 

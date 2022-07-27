@@ -45,7 +45,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- This is the minimum (oldest) JUnit 5 version expected to work with this library -->
-        <junit.jupiter.version>5.8.2</junit.jupiter.version>
+        <junit.jupiter.version>5.8.0</junit.jupiter.version>
 
         <assertj.version>3.23.1</assertj.version>
 
