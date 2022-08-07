@@ -61,6 +61,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <maven-versions-plugin.version>2.11.0</maven-versions-plugin.version>
         <maven-release-plugin.version>3.0.0-M6</maven-release-plugin.version>
+        <maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
     </properties>
 
@@ -128,6 +129,14 @@
                         <goals>deploy</goals>
                         <pushChanges>false</pushChanges>
                         <localCheckout>true</localCheckout>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                    <configuration>
+                        <skip>true</skip>
                     </configuration>
                 </plugin>
                 <plugin>
