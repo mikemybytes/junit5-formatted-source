@@ -113,8 +113,8 @@
                     <version>${maven-surefire-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-versions-plugin</artifactId>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
                     <version>${maven-versions-plugin.version}</version>
                 </plugin>
                 <plugin>
