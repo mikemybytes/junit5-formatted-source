@@ -35,9 +35,24 @@ Requirements:
 - Java 11+
 - JUnit 5.8.0+
 
-Maven/Gradle artifacts: coming soon!
-
 _Note: This library does not introduce any dependencies other than the JUnit 5._
+
+### Maven
+
+```xml
+    <dependency>
+        <groupId>com.mikemybytes</groupId>
+        <artifactId>junit5-formatted-source</artifactId>
+        <version>0.0.1</version>
+        <scope>test</scope>
+    </dependency>
+```
+
+### Gradle
+
+```groovy
+    testImplementation "com.mikemybytes:junit5-formatted-source:0.0.1"
+```
 
 ## Yet another argument source?
 
