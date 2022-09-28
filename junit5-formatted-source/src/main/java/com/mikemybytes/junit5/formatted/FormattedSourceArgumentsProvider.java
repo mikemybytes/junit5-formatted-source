@@ -26,7 +26,8 @@ class FormattedSourceArgumentsProvider implements ArgumentsProvider, AnnotationC
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
         require(sourceData != null);
 
-        FormatSpecification specification = new FormatAnalyzer().analyze(context, sourceData.getFormatString());
+        int expectedParameterCount = context.getRequiredTestMethod().getParameterCount();
+        FormatSpecification specification = new FormatAnalyzer().analyze(sourceData.getFormatString(), expectedParameterCount);
         var argumentsExtractor = new ArgumentsExtractor(sourceData, specification, RawArgumentsProcessor.passThrough());
         return sourceData.getLines().stream()
                 .map(argumentsExtractor::extract);

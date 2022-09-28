@@ -1,7 +1,5 @@
 package com.mikemybytes.junit5.formatted;
 
-import org.junit.jupiter.api.extension.ExtensionContext;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,10 +18,10 @@ class FormatAnalyzer {
 
     private static final Pattern formatArgumentPlaceholderPattern = Pattern.compile("\\{(\\d+)}");
 
-    FormatSpecification analyze(ExtensionContext context, String formatString) {
+    FormatSpecification analyze(String formatString, int methodParameterCount) {
         List<MatchResult> matchResults = matchFormatArgumentPlaceholders(formatString);
 
-        List<Integer> formatArgumentsOrder = extractTemplateArguments(context, matchResults);
+        List<Integer> formatArgumentsOrder = extractTemplateArguments(matchResults, methodParameterCount);
         Pattern linePattern = prepareLinePattern(formatString, matchResults, formatArgumentsOrder);
 
         return new FormatSpecification(linePattern, formatArgumentsOrder);
@@ -36,8 +34,8 @@ class FormatAnalyzer {
     }
 
     private List<Integer> extractTemplateArguments(
-            ExtensionContext context,
-            List<MatchResult> matchingFormatArgumentPlaceholders) {
+            List<MatchResult> matchingFormatArgumentPlaceholders,
+            int methodParameterCount) {
         List<Integer> templateArguments = matchingFormatArgumentPlaceholders.stream()
                 .map(r -> {
                     require(r.groupCount() == 1);
@@ -45,7 +43,6 @@ class FormatAnalyzer {
                 })
                 .collect(Collectors.toList());
 
-        int methodParameterCount = getMethodParameterCount(context);
         int formatParameterCount = templateArguments.size();
 
         require(
@@ -107,10 +104,6 @@ class FormatAnalyzer {
         }
 
         return tokens;
-    }
-
-    private int getMethodParameterCount(ExtensionContext extensionContext) {
-        return extensionContext.getRequiredTestMethod().getParameterCount();
     }
 
 }
