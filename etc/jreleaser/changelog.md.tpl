@@ -1,0 +1,5 @@
+## Changelog
+
+{{changelogChanges}}
+
+{{changelogContributors}}

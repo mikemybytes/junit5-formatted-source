@@ -61,6 +61,13 @@
         <maven-release-plugin.version>3.0.0-M6</maven-release-plugin.version>
         <maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <jreleaser-maven-plugin.version>1.3.1</jreleaser-maven-plugin.version>
+        <maven-help-plugin.version>3.3.0</maven-help-plugin.version>
+
+        <maven-central.url>https://s01.oss.sonatype.org/</maven-central.url>
+
+        <github.project-name>junit5-formatted-source</github.project-name>
+        <github.owner>mikemybytes</github.owner>
     </properties>
 
     <build>
@@ -127,12 +134,18 @@
                         <goals>deploy</goals>
                         <pushChanges>false</pushChanges>
                         <localCheckout>true</localCheckout>
+                        <scmCommentPrefix>chore: [maven-release-plugin]</scmCommentPrefix>
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
                     <version>${nexus-staging-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>${maven-help-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -144,8 +157,69 @@
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <nexusUrl>${maven-central.url}</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jreleaser</groupId>
+                <artifactId>jreleaser-maven-plugin</artifactId>
+                <version>${jreleaser-maven-plugin.version}</version>
+                <configuration>
+                    <jreleaser>
+                        <project>
+                            <name>junit5-formatted-source</name>
+                            <license>MIT</license>
+                            <copyright>mikemybytes</copyright>
+                        </project>
+                        <signing>
+                            <active>ALWAYS</active>
+                            <mode>FILE</mode>
+                            <armored>true</armored>
+                        </signing>
+                        <deploy>
+                            <maven>
+                                <nexus2>
+                                    <maven-central>
+                                        <active>ALWAYS</active>
+                                        <url>${maven-central.url}</url>
+                                        <closeRepository>true</closeRepository>
+                                        <releaseRepository>true</releaseRepository>
+                                        <stagingRepositories>target/staging-deploy</stagingRepositories>
+                                    </maven-central>
+                                </nexus2>
+                            </maven>
+                        </deploy>
+                        <release>
+                            <github>
+                                <owner>${github.owner}</owner>
+                                <name>${github.project-name}</name>
+                                <username>${github.owner}</username>
+                                <branch>main</branch>
+                                <skipTag>true</skipTag>
+                                <tagName>{{projectVersion}}</tagName>
+                                <releaseName>{{projectVersion}}</releaseName>
+                                <changelog>
+                                    <preset>conventional-commits</preset>
+                                    <formatted>ALWAYS</formatted>
+                                    <contentTemplate>etc/jreleaser/changelog.md.tpl</contentTemplate>
+                                    <links>true</links>
+                                    <labelers>
+                                        <labeler>
+                                            <title>[maven-release-plugin]</title>
+                                            <label>maven-release-plugin</label>
+                                        </labeler>
+                                        <labeler>
+                                            <title>[release]</title>
+                                            <label>release</label>
+                                        </labeler>
+                                    </labelers>
+                                    <excludeLabels>maven-release-plugin,release</excludeLabels>
+                                </changelog>
+                            </github>
+                        </release>
+                    </jreleaser>
                 </configuration>
             </plugin>
         </plugins>
