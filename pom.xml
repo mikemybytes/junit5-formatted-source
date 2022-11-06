@@ -5,7 +5,7 @@
     <groupId>com.mikemybytes</groupId>
     <artifactId>junit5-formatted-source-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
 
     <name>JUnit 5 FormattedSource (parent)</name>
     <description>Allows defining JUnit 5 ParameterizedTest cases using a human-readable format</description>
@@ -30,7 +30,7 @@
     <scm>
         <connection>scm:git:git@github.com:mikemybytes/junit5-formatted-source.git</connection>
         <developerConnection>scm:git:ssh://github.com:mikemybytes/junit5-formatted-source.git</developerConnection>
-        <tag>0.0.2</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/mikemybytes/junit5-formatted-source</url>
     </scm>
 
