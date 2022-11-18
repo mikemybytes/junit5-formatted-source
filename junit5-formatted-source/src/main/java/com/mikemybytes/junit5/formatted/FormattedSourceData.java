@@ -22,15 +22,29 @@ class FormattedSourceData {
      * Character used for quoting test arguments.
      */
     private final char quoteCharacter;
+    /**
+     * Defines whether to ignore leading and trailing whitespaces in argument values.
+     */
+    private final boolean ignoreWhitespaces;
 
     static FormattedSourceData from(FormattedSource annotation) {
         List<String> lines = extractLines(annotation.lines(), annotation.textBlock());
-        return new FormattedSourceData(annotation.format(), lines, annotation.quoteCharacter());
+        return new FormattedSourceData(
+                annotation.format(),
+                lines,
+                annotation.quoteCharacter(),
+                annotation.ignoreLeadingAndTrailingWhitespace()
+        );
     }
 
     static FormattedSourceData from(FormattedSourceTest annotation) {
         List<String> lines = extractLines(annotation.lines(), annotation.textBlock());
-        return new FormattedSourceData(annotation.format(), lines, annotation.quoteCharacter());
+        return new FormattedSourceData(
+                annotation.format(),
+                lines,
+                annotation.quoteCharacter(),
+                annotation.ignoreLeadingAndTrailingWhitespace()
+        );
     }
 
     private static List<String> extractLines(String[] lines, String textBlock) {
@@ -41,10 +55,11 @@ class FormattedSourceData {
         }
     }
 
-    private FormattedSourceData(String formatString, List<String> lines, char quoteCharacter) {
+    private FormattedSourceData(String formatString, List<String> lines, char quoteCharacter, boolean ignoreWhitespaces) {
         this.formatString = formatString;
         this.lines = lines;
         this.quoteCharacter = quoteCharacter;
+        this.ignoreWhitespaces = ignoreWhitespaces;
     }
 
     String getFormatString() {
@@ -57,5 +72,9 @@ class FormattedSourceData {
 
     char getQuoteCharacter() {
         return quoteCharacter;
+    }
+
+    public boolean isIgnoreWhitespaces() {
+        return ignoreWhitespaces;
     }
 }

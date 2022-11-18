@@ -72,4 +72,9 @@ public @interface FormattedSourceTest {
      */
     char quoteCharacter() default '\'';
 
+    /**
+     * Allows to ignore (or not) leading and trailing whitespace characters identified in the argument values.
+     */
+    boolean ignoreLeadingAndTrailingWhitespace() default true;
+
 }

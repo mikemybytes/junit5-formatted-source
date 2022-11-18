@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FormattedSourceAnnotationTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} + {1} = {2}")
     @FormattedSource(format = "{0} + {1} = {2}", lines = {
             "1 + 2 = 3",
             "3 + 4 = 7"
@@ -67,7 +67,7 @@ class FormattedSourceAnnotationTest {
         assertThat(c).isEqualTo("xyz");
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "appending {0} to {1} gives {2}")
     @FormattedSource(format = "appending {0} to {1} gives {2}", quoteCharacter = '"', textBlock = """
             appending "foo" to "bar" gives "foobar"
             """)
@@ -75,6 +75,37 @@ class FormattedSourceAnnotationTest {
         assertThat(a).isEqualTo("foo");
         assertThat(b).isEqualTo("bar");
         assertThat(c).isEqualTo("foobar");
+    }
+
+    @ParameterizedTest(name = "is {0} empty?")
+    @FormattedSource(format = "is {0} empty?", textBlock = """
+            is '' empty?
+            """)
+    void supportsEmptyQuotedArguments(String argument) {
+        assertThat(argument).isEmpty();
+    }
+
+    @ParameterizedTest(name = "start {0} -> {1} => {2} > {3} end")
+    @FormattedSource(format = "start {0} -> {1} => {2} > {3} end", textBlock = """
+            start a  ->      'b'      =>  c >   '   d ' end
+            """)
+    void trimsLeadingAndTrailingWhitespacesWhenEnabled(String a, String b, String c, String d) {
+        assertThat(a).isEqualTo("a");
+        assertThat(b).isEqualTo("b");
+        assertThat(c).isEqualTo("c");
+        assertThat(d).isEqualTo("   d ");
+    }
+
+    @ParameterizedTest(name = "start {0} -> {1} => {2} > {3} end")
+    @FormattedSource(format = "start {0} -> {1} => {2} > {3} end",
+            ignoreLeadingAndTrailingWhitespace = false, textBlock = """
+            start a  ->      'b'      =>  c >   '   d ' end
+            """)
+    void doesNotTrimLeadingAndTrailingWhitespacesWhenDisabled(String a, String b, String c, String d) {
+        assertThat(a).isEqualTo("a ");
+        assertThat(b).isEqualTo("     'b'     ");
+        assertThat(c).isEqualTo(" c");
+        assertThat(d).isEqualTo("  '   d '");
     }
 
 }

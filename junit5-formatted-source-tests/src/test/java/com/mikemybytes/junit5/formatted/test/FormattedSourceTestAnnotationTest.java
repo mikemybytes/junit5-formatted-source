@@ -68,4 +68,32 @@ class FormattedSourceTestAnnotationTest {
         assertThat(c).isEqualTo("foobar");
     }
 
+    @FormattedSourceTest(format = "is {0} empty?", textBlock = """
+            is '' empty?
+            """)
+    void supportsEmptyQuotedArguments(String argument) {
+        assertThat(argument).isEmpty();
+    }
+
+    @FormattedSourceTest(format = "start {0} -> {1} => {2} > {3} end", textBlock = """
+            start a  ->      'b'      =>  c >   '   d ' end
+            """)
+    void trimsLeadingAndTrailingWhitespacesWhenEnabled(String a, String b, String c, String d) {
+        assertThat(a).isEqualTo("a");
+        assertThat(b).isEqualTo("b");
+        assertThat(c).isEqualTo("c");
+        assertThat(d).isEqualTo("   d ");
+    }
+
+    @FormattedSourceTest(format = "start {0} -> {1} => {2} > {3} end",
+            ignoreLeadingAndTrailingWhitespace = false, textBlock = """
+            start a  ->      'b'      =>  c >   '   d ' end
+            """)
+    void doesNotTrimLeadingAndTrailingWhitespacesWhenDisabled(String a, String b, String c, String d) {
+        assertThat(a).isEqualTo("a ");
+        assertThat(b).isEqualTo("     'b'     ");
+        assertThat(c).isEqualTo(" c");
+        assertThat(d).isEqualTo("  '   d '");
+    }
+
 }

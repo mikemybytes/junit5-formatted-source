@@ -44,7 +44,17 @@ class ArgumentsExtractor {
     }
 
     private String processArgumentValue(String rawValue) {
-        return rawValue.trim().replace("" + sourceData.getQuoteCharacter(), "");
+        require(rawValue != null, "Argument's raw value can't be null");
+
+        String value = rawValue;
+        if (sourceData.isIgnoreWhitespaces()) {
+            value = value.strip();
+        }
+        String quote = "" + sourceData.getQuoteCharacter();
+        if (value.startsWith(quote) && value.endsWith(quote)) {
+            value = value.substring(1, value.length() - 1);
+        }
+        return value;
     }
 
     /**

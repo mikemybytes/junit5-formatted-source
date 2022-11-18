@@ -16,7 +16,7 @@ import static com.mikemybytes.junit5.formatted.Preconditions.require;
  */
 class FormatAnalyzer {
 
-    private static final Pattern formatArgumentPlaceholderPattern = Pattern.compile("\\{(\\d+)}");
+    private static final Pattern formatArgumentPlaceholderPattern = Pattern.compile("\\{(\\d*)}");
 
     FormatSpecification analyze(String formatString, int methodParameterCount) {
         List<MatchResult> matchResults = matchFormatArgumentPlaceholders(formatString);
@@ -94,7 +94,7 @@ class FormatAnalyzer {
             if (startIndex == endIndex) {
                 tokens.add("");
             } else if (startIndex < formatString.length()) {
-                var part = formatString.substring(startIndex, endIndex).strip();
+                var part = formatString.substring(startIndex, endIndex);
                 tokens.add(part);
             }
             startIndex = placeholder.end();
