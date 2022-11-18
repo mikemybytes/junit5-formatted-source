@@ -101,6 +101,8 @@ class FormatAnalyzer {
         }
         if (startIndex == formatString.length()) {
             tokens.add("");
+        } else {
+            tokens.add(formatString.substring(startIndex));
         }
 
         return tokens;

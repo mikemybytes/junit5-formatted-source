@@ -57,6 +57,16 @@ class FormattedSourceAnnotationTest {
         assertThat(c).isEqualTo("xyz");
     }
 
+    @ParameterizedTest(name = "{0} maps to {1} and gives {2} (an example)")
+    @FormattedSource(format = "{0} maps to {1} and gives {2} (an example)", lines = {
+            "'foo' maps to 'bar' and gives 'xyz' (an example)"
+    })
+    void supportsFullTextFormatEndingWithText(String a, String b, String c) {
+        assertThat(a).isEqualTo("foo");
+        assertThat(b).isEqualTo("bar");
+        assertThat(c).isEqualTo("xyz");
+    }
+
     @ParameterizedTest
     @FormattedSource(format = "appending {0} to {1} gives {2}", quoteCharacter = '"', textBlock = """
             appending "foo" to "bar" gives "foobar"

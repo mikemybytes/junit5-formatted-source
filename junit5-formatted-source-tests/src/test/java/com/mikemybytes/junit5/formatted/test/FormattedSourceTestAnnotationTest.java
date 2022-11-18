@@ -50,6 +50,15 @@ class FormattedSourceTestAnnotationTest {
         assertThat(info.getDisplayName()).isEqualTo("example: 'foo' maps to 'bar' and gives 'xyz'");
     }
 
+    @FormattedSourceTest(format = "{0} maps to {1} and gives {2} (an example)", lines = {
+            "'foo' maps to 'bar' and gives 'xyz' (an example)"
+    })
+    void supportsFullTextFormatEndingWithText(String a, String b, String c) {
+        assertThat(a).isEqualTo("foo");
+        assertThat(b).isEqualTo("bar");
+        assertThat(c).isEqualTo("xyz");
+    }
+
     @FormattedSourceTest(format = "appending {0} to {1} gives {2}", quoteCharacter = '"', textBlock = """
             appending "foo" to "bar" gives "foobar"
             """)
