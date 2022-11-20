@@ -1,5 +1,10 @@
 # JUnit 5 FormattedSource
 
+![](https://img.shields.io/github/license/mikemybytes/junit5-formatted-source)
+![](https://img.shields.io/github/v/release/mikemybytes/junit5-formatted-source)
+![](https://img.shields.io/maven-central/v/com.mikemybytes/junit5-formatted-source)
+![](https://img.shields.io/github/workflow/status/mikemybytes/junit5-formatted-source/build)
+
 This library extends [JUnit 5](https://github.com/junit-team/junit5) with a new way of writing [parameterized tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests).
 It allows defining test case arguments in a human-readable way, following a user-defined format. Additionally, it automatically
 takes care of the test case name, so the input definition is also what will be presented in the test execution output.
