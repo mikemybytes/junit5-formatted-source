@@ -187,6 +187,9 @@
                                     <formatted>ALWAYS</formatted>
                                     <contentTemplate>etc/jreleaser/changelog.md.tpl</contentTemplate>
                                     <links>true</links>
+                                    <contributors>
+                                        <format>- {{contributorName}} ({{contributorUsernameAsLink}})</format>
+                                    </contributors>
                                     <labelers>
                                         <labeler>
                                             <title>[maven-release-plugin]</title>
