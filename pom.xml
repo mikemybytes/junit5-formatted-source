@@ -189,7 +189,7 @@
                                     <contentTemplate>etc/jreleaser/changelog.md.tpl</contentTemplate>
                                     <links>true</links>
                                     <contributors>
-                                        <format>- {{contributorName}} ({{contributorUsernameAsLink}})</format>
+                                        <format>- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}</format>
                                     </contributors>
                                     <labelers>
                                         <labeler>
