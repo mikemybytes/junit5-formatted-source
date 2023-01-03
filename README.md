@@ -3,7 +3,7 @@
 ![](https://img.shields.io/github/license/mikemybytes/junit5-formatted-source)
 ![](https://img.shields.io/github/v/release/mikemybytes/junit5-formatted-source)
 ![](https://img.shields.io/maven-central/v/com.mikemybytes/junit5-formatted-source)
-![](https://img.shields.io/github/workflow/status/mikemybytes/junit5-formatted-source/build)
+![](https://img.shields.io/github/actions/workflow/status/mikemybytes/junit5-formatted-source/build.yml)
 
 This library extends [JUnit 5](https://github.com/junit-team/junit5) with a new way of writing [parameterized tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests).
 It allows defining test case arguments in a human-readable way, following a user-defined format. Additionally, it automatically
