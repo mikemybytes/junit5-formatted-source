@@ -62,7 +62,7 @@
         <jreleaser-maven-plugin.version>1.4.0</jreleaser-maven-plugin.version>
         <maven-help-plugin.version>3.3.0</maven-help-plugin.version>
 
-        <maven-central.url>https://s01.oss.sonatype.org/</maven-central.url>
+        <maven-central.url>https://s01.oss.sonatype.org/service/local</maven-central.url>
 
         <github.project-name>junit5-formatted-source</github.project-name>
         <github.owner>mikemybytes</github.owner>
