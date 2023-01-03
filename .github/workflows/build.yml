@@ -9,12 +9,14 @@ on:
       - 'LICENSE.md'
       - '.gitignore'
       - 'etc/jreleaser/changelog.md.tpl'
+      - 'bin/**'
   pull_request:
     paths-ignore:
       - 'README.md'
       - 'LICENSE.md'
       - '.gitignore'
       - 'etc/jreleaser/changelog.md.tpl'
+      - 'bin/**'
 
 jobs:
   build:
