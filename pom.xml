@@ -5,7 +5,7 @@
     <groupId>com.mikemybytes</groupId>
     <artifactId>junit5-formatted-source-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <name>JUnit 5 FormattedSource (parent)</name>
     <description>Allows defining JUnit 5 ParameterizedTest cases using a human-readable format</description>
