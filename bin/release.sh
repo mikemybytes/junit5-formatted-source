@@ -47,7 +47,7 @@ log "Staging artifacts"
 mvn deploy -DaltDeploymentRepository=local::file:./target/staging-deploy
 
 log "Invoking jreleaser"
-mvn jreleaser:full-release
+mvn -pl :junit5-formatted-source-parent jreleaser:full-release
 
 log "Checking out main"
 git checkout main

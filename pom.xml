@@ -148,6 +148,7 @@
                 <groupId>org.jreleaser</groupId>
                 <artifactId>jreleaser-maven-plugin</artifactId>
                 <version>${jreleaser-maven-plugin.version}</version>
+                <inherited>false</inherited>
                 <configuration>
                     <jreleaser>
                         <project>
