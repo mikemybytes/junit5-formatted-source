@@ -1,7 +1,9 @@
 package com.mikemybytes.junit5.formatted;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -26,6 +28,10 @@ class FormattedSourceData {
      * Defines whether to ignore leading and trailing whitespaces in argument values.
      */
     private final boolean ignoreWhitespaces;
+    /**
+     * A set of strings that should be interpreted as {@code null} references.
+     */
+    private final Set<String> nullValues;
 
     static FormattedSourceData from(FormattedSource annotation) {
         List<String> lines = extractLines(annotation.lines(), annotation.textBlock());
@@ -33,7 +39,8 @@ class FormattedSourceData {
                 annotation.format(),
                 lines,
                 annotation.quoteCharacter(),
-                annotation.ignoreLeadingAndTrailingWhitespace()
+                annotation.ignoreLeadingAndTrailingWhitespace(),
+                toSet(annotation.nullValues())
         );
     }
 
@@ -43,7 +50,8 @@ class FormattedSourceData {
                 annotation.format(),
                 lines,
                 annotation.quoteCharacter(),
-                annotation.ignoreLeadingAndTrailingWhitespace()
+                annotation.ignoreLeadingAndTrailingWhitespace(),
+                toSet(annotation.nullValues())
         );
     }
 
@@ -51,15 +59,29 @@ class FormattedSourceData {
         if (!textBlock.isEmpty()) {
             return textBlock.lines().collect(Collectors.toList());
         } else {
-            return Arrays.asList(lines);
+            return toList(lines);
         }
     }
 
-    private FormattedSourceData(String formatString, List<String> lines, char quoteCharacter, boolean ignoreWhitespaces) {
+    private static List<String> toList(String[] array) {
+        return array != null ? Arrays.asList(array) : Collections.emptyList();
+    }
+
+    private static Set<String> toSet(String[] array) {
+        return Set.copyOf(toList(array));
+    }
+
+    private FormattedSourceData(
+            String formatString,
+            List<String> lines,
+            char quoteCharacter,
+            boolean ignoreWhitespaces,
+            Set<String> nullValues) {
         this.formatString = formatString;
         this.lines = lines;
         this.quoteCharacter = quoteCharacter;
         this.ignoreWhitespaces = ignoreWhitespaces;
+        this.nullValues = nullValues;
     }
 
     String getFormatString() {
@@ -76,5 +98,9 @@ class FormattedSourceData {
 
     public boolean isIgnoreWhitespaces() {
         return ignoreWhitespaces;
+    }
+
+    public Set<String> getNullValues() {
+        return nullValues;
     }
 }

@@ -160,6 +160,9 @@ Optionally, argument values can be surrounded by the `quoteCharacter` (default: 
 By default, leading and trailing whitespaces will be removed from the argument value (unless they're a part of the 
 quoted value). Yet, you can easily disable this behavior by setting `ignoreLeadingAndTrailingWhitespace = false`.
 
+Text values that should be interpreted as `null` can be specified as `nullValues`. Note that regardless of the setting, 
+unquoted empty values will always be converted to `null`.
+
 You can combine `@FormattedSourceTest` and `@FormattedSource` with other standard JUnit 5 annotations like 
 `@DisplayName` or `@Order`. Also, both annotations support the [implicit argument conversion](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion).
 

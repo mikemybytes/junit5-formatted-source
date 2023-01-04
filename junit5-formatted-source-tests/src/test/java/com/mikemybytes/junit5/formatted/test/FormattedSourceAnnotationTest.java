@@ -108,4 +108,26 @@ class FormattedSourceAnnotationTest {
         assertThat(d).isEqualTo("  '   d '");
     }
 
+    @ParameterizedTest(name = "this is null: {0} and this {1} is not!")
+    @FormattedSource(
+            format = "this is null: {0} and this {1} is not!",
+            lines = {"this is null:  and this '' is not!"})
+    void recognizesEmptyUnquotedValueAsNull(String a, String b) {
+        assertThat(a).isNull();
+        assertThat(b).isEmpty();
+    }
+
+    @ParameterizedTest(name = "a: {0}, b: {1}, c: {2}, d: {3}")
+    @FormattedSource(format = "a: {0}, b: {1}, c: {2}, d: {3}",
+            nullValues = {"N/A", "null"},
+            textBlock = """
+            a: N/A, b: 'N/A', c: null, d: 'null'
+            """)
+    void supportsCustomNullValues(String a, String b, String c, String d) {
+        assertThat(a).isNull();
+        assertThat(b).isNull();
+        assertThat(c).isNull();
+        assertThat(d).isNull();
+    }
+
 }

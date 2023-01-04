@@ -49,4 +49,15 @@ public @interface FormattedSource {
      */
     boolean ignoreLeadingAndTrailingWhitespace() default true;
 
+    /**
+     * A list of strings that should be interpreted as {@code null} references.
+     *
+     * <p>Provided values (e.g. {@code "null"}, {@code "N/A"}, {@code "NONE"}) will be converted to {@code null}
+     * references, no matter if quoted ({@link #quoteCharacter()}) or not.</p>
+     *
+     * <p>Regardless of the value of this attribute, unquoted empty values will always be interpreted as
+     * {@code null}.</p>
+     */
+    String[] nullValues() default {};
+
 }

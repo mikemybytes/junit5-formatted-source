@@ -50,10 +50,21 @@ class ArgumentsExtractor {
         if (sourceData.isIgnoreWhitespaces()) {
             value = value.strip();
         }
+
+        if (value.isEmpty()) {
+            // interpreting unquoted empty value as null just like @CsvSource does
+            return null;
+        }
+
         String quote = "" + sourceData.getQuoteCharacter();
         if (value.startsWith(quote) && value.endsWith(quote)) {
             value = value.substring(1, value.length() - 1);
         }
+
+        if (sourceData.getNullValues().contains(value)) {
+            value = null;
+        }
+
         return value;
     }
 
