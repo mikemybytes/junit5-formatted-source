@@ -19,7 +19,7 @@ public @interface FormattedSource {
 
     /**
      * The definition of the arguments format. Specific test method arguments must be referenced
-     * by their position (starting from zero). E.g. {@code {2}} represents 3rd argument of the test method.
+     * by their position (starting from zero). E.g. {@code {2}} represents the  3rd argument of the test method.
      */
     String format();
 
@@ -27,6 +27,9 @@ public @interface FormattedSource {
      * Test case input represented as lines in the defined {@link #format}. Each line represents a separate test case
      * of the {@link org.junit.jupiter.params.ParameterizedTest}. Lines must not contain newline characters like
      * {@code \n}.
+     *
+     * <p>Defaults to an empty string. Note: the test case input must be supplied either via {@link #lines()} or
+     * {@link #textBlock()}.</p>
      */
     String[] lines() default {};
 
@@ -36,16 +39,23 @@ public @interface FormattedSource {
      * characters like {@code \n}.
      *
      * <p>When running on Java version less than 15, using {@link #lines} is recommended instead.</p>
+     *
+     * <p>Defaults to an empty string. Note: the test case input must be supplied either via {@link #lines()} or
+     * {@link #textBlock()}.</p>
      */
     String textBlock() default "";
 
     /**
      * The quote character that could be used to separate argument's value from the rest of the input.
+     *
+     * <p>Defaults to a single quote ({@code '}).</p>
      */
     char quoteCharacter() default '\'';
 
     /**
      * Allows to ignore (or not) leading and trailing whitespace characters identified in the argument values.
+     *
+     * <p>Defaults to {@code true}.</p>
      */
     boolean ignoreLeadingAndTrailingWhitespace() default true;
 
@@ -57,11 +67,15 @@ public @interface FormattedSource {
      *
      * <p>Regardless of the value of this attribute, unquoted empty values will always be interpreted as
      * {@code null}.</p>
+     *
+     * <p>Defaults to {@code {}}.</p>
      */
     String[] nullValues() default {};
 
     /**
      * A value used to substitute quoted empty strings read from the input.
+     *
+     * <p>Defaults to empty string ({@code ""}).</p>
      */
     String emptyValue() default "";
 
