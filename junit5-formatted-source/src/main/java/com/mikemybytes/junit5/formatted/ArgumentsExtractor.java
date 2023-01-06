@@ -62,7 +62,11 @@ class ArgumentsExtractor {
         }
 
         if (sourceData.getNullValues().contains(value)) {
-            value = null;
+            return null;
+        }
+
+        if(value.isEmpty()) {
+            return sourceData.getEmptyValue();
         }
 
         return value;

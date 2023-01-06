@@ -163,6 +163,9 @@ quoted value). Yet, you can easily disable this behavior by setting `ignoreLeadi
 Text values that should be interpreted as `null` can be specified as `nullValues`. Note that regardless of the setting, 
 unquoted empty values will always be converted to `null`.
 
+Empty values (represented as quoted empty strings - default: `''`) can be substituted with a custom value specified as 
+an `emptyValue`.
+
 You can combine `@FormattedSourceTest` and `@FormattedSource` with other standard JUnit 5 annotations like 
 `@DisplayName` or `@Order`. Also, both annotations support the [implicit argument conversion](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion).
 

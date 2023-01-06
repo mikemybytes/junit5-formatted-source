@@ -33,6 +33,11 @@ class FormattedSourceData {
      */
     private final Set<String> nullValues;
 
+    /**
+     * A value used to substitute quoted empty strings.
+     */
+    private final String emptyValue;
+
     static FormattedSourceData from(FormattedSource annotation) {
         List<String> lines = extractLines(annotation.lines(), annotation.textBlock());
         return new FormattedSourceData(
@@ -40,7 +45,8 @@ class FormattedSourceData {
                 lines,
                 annotation.quoteCharacter(),
                 annotation.ignoreLeadingAndTrailingWhitespace(),
-                toSet(annotation.nullValues())
+                toSet(annotation.nullValues()),
+                annotation.emptyValue()
         );
     }
 
@@ -51,7 +57,8 @@ class FormattedSourceData {
                 lines,
                 annotation.quoteCharacter(),
                 annotation.ignoreLeadingAndTrailingWhitespace(),
-                toSet(annotation.nullValues())
+                toSet(annotation.nullValues()),
+                annotation.emptyValue()
         );
     }
 
@@ -76,12 +83,14 @@ class FormattedSourceData {
             List<String> lines,
             char quoteCharacter,
             boolean ignoreWhitespaces,
-            Set<String> nullValues) {
+            Set<String> nullValues,
+            String emptyValue) {
         this.formatString = formatString;
         this.lines = lines;
         this.quoteCharacter = quoteCharacter;
         this.ignoreWhitespaces = ignoreWhitespaces;
         this.nullValues = nullValues;
+        this.emptyValue = emptyValue;
     }
 
     String getFormatString() {
@@ -102,5 +111,9 @@ class FormattedSourceData {
 
     public Set<String> getNullValues() {
         return nullValues;
+    }
+
+    public String getEmptyValue() {
+        return emptyValue;
     }
 }

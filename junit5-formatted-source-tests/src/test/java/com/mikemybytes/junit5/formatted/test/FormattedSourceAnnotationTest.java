@@ -130,4 +130,10 @@ class FormattedSourceAnnotationTest {
         assertThat(d).isNull();
     }
 
+    @ParameterizedTest
+    @FormattedSource(emptyValue = "EMPTY", format = "a: {0}", lines = {"a: ''"})
+    void supportsCustomEmptyValue(String a) {
+        assertThat(a).isEqualTo("EMPTY");
+    }
+
 }

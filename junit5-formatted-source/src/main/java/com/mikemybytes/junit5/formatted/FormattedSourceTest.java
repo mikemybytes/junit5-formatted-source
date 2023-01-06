@@ -88,4 +88,9 @@ public @interface FormattedSourceTest {
      */
     String[] nullValues() default {};
 
+    /**
+     * A value used to substitute quoted empty strings read from the input.
+     */
+    String emptyValue() default "";
+
 }
