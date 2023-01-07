@@ -48,7 +48,7 @@ _Note: This library does not introduce any dependencies other than the JUnit 5._
     <dependency>
         <groupId>com.mikemybytes</groupId>
         <artifactId>junit5-formatted-source</artifactId>
-        <version>0.1.2</version>
+        <version>0.2.0</version>
         <scope>test</scope>
     </dependency>
 ```
@@ -56,7 +56,7 @@ _Note: This library does not introduce any dependencies other than the JUnit 5._
 ### Gradle
 
 ```groovy
-    testImplementation "com.mikemybytes:junit5-formatted-source:0.1.2"
+    testImplementation "com.mikemybytes:junit5-formatted-source:0.2.0"
 ```
 
 ## Yet another argument source?
