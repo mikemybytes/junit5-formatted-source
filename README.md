@@ -168,8 +168,3 @@ an `emptyValue`.
 
 You can combine `@FormattedSourceTest` and `@FormattedSource` with other standard JUnit 5 annotations like 
 `@DisplayName` or `@Order`. Also, both annotations support the [implicit argument conversion](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion).
-
-## Limitations
-
-As the project is still in a relatively early stage, not all the customizations known from `@CsvSource` are already
-supported. See the [project's issue list](https://github.com/mikemybytes/junit5-formatted-source/issues) for more details.
