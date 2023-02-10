@@ -183,11 +183,11 @@ The _minimum_ supported Java version is Java 11.
 ### Build
 
 ```
-./mvnd clean verify
+./mvnw clean verify
 ```
 
 ### Build & install
 
 ```
-./mvnd clean install
+./mvnw clean install
 ```
