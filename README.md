@@ -36,11 +36,11 @@ Of course, _JUnit 5 FormattedSource_ can do even more!
 
 ## Installing
 
-Requirements:
+### Requirements
 - Java 11+
 - JUnit 5.8.0+
 
-_Note: This library does not introduce any dependencies other than the JUnit 5._
+_Note: The library does not introduce any dependencies other than the JUnit 5._
 
 ### Maven
 
@@ -58,6 +58,10 @@ _Note: This library does not introduce any dependencies other than the JUnit 5._
 ```groovy
     testImplementation "com.mikemybytes:junit5-formatted-source:0.2.0"
 ```
+
+### Java Platform Module System (JPMS)
+
+Java module name: `com.mikemybytes.junit5.formatted` ([descriptor](junit5-formatted-source/src/main/java/module-info.java))
 
 ## Yet another argument source?
 
