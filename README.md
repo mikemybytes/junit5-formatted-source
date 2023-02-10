@@ -172,3 +172,22 @@ an `emptyValue`.
 
 You can combine `@FormattedSourceTest` and `@FormattedSource` with other standard JUnit 5 annotations like 
 `@DisplayName` or `@Order`. Also, both annotations support the [implicit argument conversion](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion).
+
+## Building from source
+
+The project comes with [Maven Wrapper](https://maven.apache.org/wrapper/), so it can be built even without Maven
+installed locally. There's no need to pass any additional properties.
+
+The _minimum_ supported Java version is Java 11.
+
+### Build
+
+```
+./mvnd clean verify
+```
+
+### Build & install
+
+```
+./mvnd clean install
+```
