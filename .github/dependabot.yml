@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # for compatibility reasons, we stick to the oldest version supporting features required by this library
+      - dependency-name: "org.junit.jupiter:junit-jupiter"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
