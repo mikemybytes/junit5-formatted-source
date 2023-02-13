@@ -54,7 +54,7 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
-        <maven-project-info-reports-plugin>3.4.1</maven-project-info-reports-plugin>
+        <maven-project-info-reports-plugin>3.4.2</maven-project-info-reports-plugin>
         <maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
         <maven-versions-plugin.version>2.14.2</maven-versions-plugin.version>
         <maven-release-plugin.version>3.0.0-M7</maven-release-plugin.version>
