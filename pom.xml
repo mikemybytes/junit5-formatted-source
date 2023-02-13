@@ -45,7 +45,7 @@
         <!-- This is the minimum (oldest) JUnit 5 version expected to work with this library -->
         <junit.jupiter.version>5.8.0</junit.jupiter.version>
 
-        <assertj.version>3.23.1</assertj.version>
+        <assertj.version>3.24.2</assertj.version>
 
         <!-- Maven plugins -->
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
