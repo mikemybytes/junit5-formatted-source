@@ -1,9 +1,6 @@
 package com.mikemybytes.junit5.formatted;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,6 +21,12 @@ class FormattedSourceData {
      * Character used for quoting test arguments.
      */
     private final char quoteCharacter;
+
+    /**
+     * Fixed placeholder string to be used instead of the default indexed syntax.
+     */
+    private final String argumentPlaceholder;
+
     /**
      * Defines whether to ignore leading and trailing whitespaces in argument values.
      */
@@ -44,6 +47,7 @@ class FormattedSourceData {
                 annotation.format(),
                 lines,
                 annotation.quoteCharacter(),
+                annotation.argumentPlaceholder(),
                 annotation.ignoreLeadingAndTrailingWhitespace(),
                 toSet(annotation.nullValues()),
                 annotation.emptyValue()
@@ -56,6 +60,7 @@ class FormattedSourceData {
                 annotation.format(),
                 lines,
                 annotation.quoteCharacter(),
+                annotation.argumentPlaceholder(),
                 annotation.ignoreLeadingAndTrailingWhitespace(),
                 toSet(annotation.nullValues()),
                 annotation.emptyValue()
@@ -82,12 +87,14 @@ class FormattedSourceData {
             String formatString,
             List<String> lines,
             char quoteCharacter,
+            String argumentPlaceholder,
             boolean ignoreWhitespaces,
             Set<String> nullValues,
             String emptyValue) {
         this.formatString = formatString;
         this.lines = lines;
         this.quoteCharacter = quoteCharacter;
+        this.argumentPlaceholder = argumentPlaceholder;
         this.ignoreWhitespaces = ignoreWhitespaces;
         this.nullValues = nullValues;
         this.emptyValue = emptyValue;
@@ -103,6 +110,13 @@ class FormattedSourceData {
 
     char getQuoteCharacter() {
         return quoteCharacter;
+    }
+
+    Optional<String> getArgumentPlaceholder() {
+        if (argumentPlaceholder == null || argumentPlaceholder.isBlank()) { // TODO: nonnull annotations?
+            return Optional.empty();
+        }
+        return Optional.of(argumentPlaceholder);
     }
 
     public boolean isIgnoreWhitespaces() {

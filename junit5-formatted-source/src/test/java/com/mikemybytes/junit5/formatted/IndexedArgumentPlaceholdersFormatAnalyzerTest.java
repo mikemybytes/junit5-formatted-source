@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FormatAnalyzerTest {
+class IndexedArgumentPlaceholdersFormatAnalyzerTest {
 
-    private final FormatAnalyzer analyzer = new FormatAnalyzer();
+    private final IndexedArgumentPlaceholdersFormatAnalyzer analyzer = new IndexedArgumentPlaceholdersFormatAnalyzer();
 
     @ParameterizedTest
     @CsvSource(delimiter = '|', value = {
