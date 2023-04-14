@@ -8,6 +8,7 @@ on:
       - 'README.md'
       - 'LICENSE.md'
       - '.gitignore'
+      - 'docs/**'
       - 'etc/jreleaser/changelog.md.tpl'
       - 'bin/**'
   pull_request:
@@ -15,6 +16,7 @@ on:
       - 'README.md'
       - 'LICENSE.md'
       - '.gitignore'
+      - 'docs/**'
       - 'etc/jreleaser/changelog.md.tpl'
       - 'bin/**'
 
