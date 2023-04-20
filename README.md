@@ -7,7 +7,7 @@
 
 This library extends [JUnit 5](https://github.com/junit-team/junit5) with a new way of writing [parameterized tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests).
 It allows defining test case arguments in a human-readable way, following a user-defined format. Additionally, it automatically
-takes care of the test case name, so the input definition is also what will be presented in the test execution output.
+takes care of the test case names, so the input definition is also what will be presented in the test execution output.
 
 ```java
 class CalculatorTest {
@@ -63,10 +63,14 @@ _Note: The library does not introduce any dependencies other than the JUnit 5._
 
 Java module name: `com.mikemybytes.junit5.formatted` ([descriptor](junit5-formatted-source/src/main/java/module-info.java))
 
+## User Guide
+
+Details and usage examples can be found in the project's [User Guide](docs/user-guide.md).
+
 ## Yet another argument source?
 
-The project has been inspired by the build-in [`@CsvSource` annotation](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-sources-CsvSource),
-which allows not only [writing data table tests](https://mikemybytes.com/2021/10/19/parameterize-like-a-pro-with-junit-5-csvsource/)
+The project has been inspired by the built-in [`@CsvSource` annotation](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-sources-CsvSource),
+which allows writing not only [data table tests](https://mikemybytes.com/2021/10/19/parameterize-like-a-pro-with-junit-5-csvsource/)
 but also specification-like test case definitions:
 
 ```java
@@ -84,7 +88,7 @@ class CsvSourceSpecificationTest {
 }
 ```
 
-Yet, `@CsvSource` limits the user to only one `delimiterString`, which effectively means supporting 
+Yet, the `@CsvSource` limits the user to only one `delimiterString`, which effectively means supporting 
 only two arguments at a time. Additionally, selected delimiter must be repeated within the `@ParameterizedTest`'s `name`
 parameter in order to appear in the test execution output.
 
@@ -113,8 +117,8 @@ mapsOneValueToAnother(String, String, int) ✔
 
 ## `@FormattedSourceTest` vs `@FormattedSource`
 
-The library comes with two annotations. `@FormattedSource` is just a standard JUnit 5 argument source that has to be
-combined with `@ParameterizedTest`. It also does not influence generated test case names automatically:
+The library comes with two annotations. `@FormattedSource` is just a standard [JUnit 5 argument source](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-sources) 
+that has to be combined with `@ParameterizedTest`. It also does not influence generated test case names automatically:
 
 ```java
 class DurationEncodingTest {
@@ -149,30 +153,6 @@ class DurationEncodingShorterTest {
 }
 ```
 
-## Features
-
-Both `@FormattedSourceTest` and `@FormattedSource` share the same set of configuration parameters.
-
-Format string - defined via `format` parameter - can reference test case argument values by their position (index) using
-surrounded with braces. For example, `{3}` means "the value of the 4th argument".
-
-Test case definition (input) can be defined as a list (array to be precise) of `lines` or using a single Java 15+ 
-`textBlock`. In both cases, each line represents a separate test case.
-
-Optionally, argument values can be surrounded by the `quoteCharacter` (default: single quote) to improve readability.
-
-By default, leading and trailing whitespaces will be removed from the argument value (unless they're a part of the 
-quoted value). Yet, you can easily disable this behavior by setting `ignoreLeadingAndTrailingWhitespace = false`.
-
-Text values that should be interpreted as `null` can be specified as `nullValues`. Note that regardless of the setting, 
-unquoted empty values will always be converted to `null`.
-
-Empty values (represented as quoted empty strings - default: `''`) can be substituted with a custom value specified as 
-an `emptyValue`.
-
-You can combine `@FormattedSourceTest` and `@FormattedSource` with other standard JUnit 5 annotations like 
-`@DisplayName` or `@Order`. Also, both annotations support the [implicit argument conversion](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion).
-
 ## Building from source
 
 The project comes with [Maven Wrapper](https://maven.apache.org/wrapper/), so it can be built even without Maven
@@ -191,3 +171,7 @@ The _minimum_ supported Java version is Java 11.
 ```
 ./mvnw clean install
 ```
+
+### License
+
+The project is distributed under the [MIT license](LICENSE.md).
