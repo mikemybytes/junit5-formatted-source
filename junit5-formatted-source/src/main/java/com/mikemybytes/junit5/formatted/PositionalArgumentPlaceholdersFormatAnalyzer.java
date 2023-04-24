@@ -9,8 +9,8 @@ import java.util.stream.IntStream;
 import static com.mikemybytes.junit5.formatted.Preconditions.require;
 
 /**
- * Creates {@link FormatSpecification} for positional argument placeholders. The order of arguments is always determined
- * based on their order.
+ * Creates {@link FormatSpecification} for positional argument placeholders. The order of arguments is determined
+ * based on their order of appearance. The same (provided) placeholder string is used to represent them.
  */
 class PositionalArgumentPlaceholdersFormatAnalyzer implements FormatAnalyzer {
 

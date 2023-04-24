@@ -113,7 +113,7 @@ class FormattedSourceData {
     }
 
     Optional<String> getArgumentPlaceholder() {
-        if (argumentPlaceholder == null || argumentPlaceholder.isBlank()) { // TODO: nonnull annotations?
+        if (argumentPlaceholder == null || argumentPlaceholder.isBlank()) {
             return Optional.empty();
         }
         return Optional.of(argumentPlaceholder);

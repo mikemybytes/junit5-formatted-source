@@ -19,10 +19,10 @@ public @interface FormattedSource {
 
     /**
      * The definition of the arguments format. By default, specific test method arguments must be referenced
-     * by their position (starting from zero). E.g. {@code {2}} represents the  3rd argument of the test method.
+     * by their position (starting from zero). E.g. {@code {2}} represents the 3rd argument of the test method.
      * <p>Setting {@link #argumentPlaceholder()} disables the default behavior, allowing to use a fixed placeholder
-     * string instead. As there's no braces (curly brackets) escaping, switching to the fixed argument placeholder allow
-     * using them in the format string.</p>
+     * string instead. As there's no braces (curly brackets) escaping, switching to the fixed argument placeholder
+     * allows using them in the format string.</p>
      */
     String format();
 
