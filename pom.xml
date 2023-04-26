@@ -58,7 +58,7 @@
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
         <maven-versions-plugin.version>2.15.0</maven-versions-plugin.version>
         <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
-        <maven-deploy-plugin.version>3.1.0</maven-deploy-plugin.version>
+        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
         <jreleaser-maven-plugin.version>1.5.1</jreleaser-maven-plugin.version>
         <maven-help-plugin.version>3.4.0</maven-help-plugin.version>
         <maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
