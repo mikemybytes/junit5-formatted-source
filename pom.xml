@@ -5,7 +5,7 @@
     <groupId>com.mikemybytes</groupId>
     <artifactId>junit5-formatted-source-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <name>JUnit 5 FormattedSource (parent)</name>
     <description>Parent project for all JUnit 5 FormattedSource library modules</description>
@@ -30,7 +30,7 @@
     <scm>
         <connection>scm:git:git@github.com:mikemybytes/junit5-formatted-source.git</connection>
         <developerConnection>scm:git:ssh://github.com:mikemybytes/junit5-formatted-source.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>1.0.0</tag>
         <url>https://github.com/mikemybytes/junit5-formatted-source</url>
     </scm>
 
