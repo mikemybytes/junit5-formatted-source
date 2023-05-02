@@ -3,7 +3,7 @@
     <parent>
         <artifactId>junit5-formatted-source-parent</artifactId>
         <groupId>com.mikemybytes</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
