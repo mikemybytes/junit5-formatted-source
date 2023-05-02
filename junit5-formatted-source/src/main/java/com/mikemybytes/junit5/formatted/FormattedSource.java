@@ -59,6 +59,8 @@ public @interface FormattedSource {
      * Specifies fixed argument placeholder string that should be used instead of the default indexed syntax.
      * Each placeholder's occurrence corresponds to the next argument of the annotated test method
      * (positional arguments).
+     *
+     * @since 1.0.0
      */
     String argumentPlaceholder() default "";
 
