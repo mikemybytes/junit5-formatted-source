@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
 
     <name>JUnit 5 FormattedSource (tests)</name>
+    <description>A set of integration tests for the JUnit 5 FormattedSource library</description>
+    <url>${github.project-url}</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
