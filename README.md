@@ -61,7 +61,8 @@ _Note: The library does not introduce any dependencies other than the JUnit 5._
 
 ### Java Platform Module System (JPMS)
 
-Java module name: `com.mikemybytes.junit5.formatted` ([descriptor](junit5-formatted-source/src/main/java/module-info.java))
+Java module name: `com.mikemybytes.junit5.formatted` ([descriptor](junit5-formatted-source/src/main/java/module-info.java), 
+[example usage](junit5-formatted-source-tests/src/test/java/module-info.java))
 
 ## User Guide
 
@@ -158,7 +159,8 @@ class DurationEncodingShorterTest {
 The project comes with [Maven Wrapper](https://maven.apache.org/wrapper/), so it can be built even without Maven
 installed locally. There's no need to pass any additional properties.
 
-The _minimum_ supported Java version is Java 11.
+The minimum Java version required to build the project is Java 17. Produced artifacts will be binary-compatible
+with Java 11+.
 
 ### Build
 
