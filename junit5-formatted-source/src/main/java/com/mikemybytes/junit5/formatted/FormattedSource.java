@@ -50,6 +50,7 @@ public @interface FormattedSource {
 
     /**
      * The quote character that could be used to separate argument's value from the rest of the input.
+     * As there's no escaping support, a different quote character should be chosen in case of a conflict.
      *
      * <p>Defaults to a single quote ({@code '}).</p>
      */
