@@ -18,8 +18,11 @@ import java.lang.annotation.*;
 public @interface FormattedSource {
 
     /**
-     * The definition of the arguments format. Specific test method arguments must be referenced
-     * by their position (starting from zero). E.g. {@code {2}} represents the  3rd argument of the test method.
+     * The definition of the arguments format. By default, specific test method arguments must be referenced
+     * by their position (starting from zero). E.g. {@code {2}} represents the 3rd argument of the test method.
+     * <p>Setting {@link #argumentPlaceholder()} disables the default behavior, allowing to use a fixed placeholder
+     * string instead. As there's no braces (curly brackets) escaping, switching to the fixed argument placeholder
+     * allows using them in the format string.</p>
      */
     String format();
 
@@ -51,6 +54,15 @@ public @interface FormattedSource {
      * <p>Defaults to a single quote ({@code '}).</p>
      */
     char quoteCharacter() default '\'';
+
+    /**
+     * Specifies fixed argument placeholder string that should be used instead of the default indexed syntax.
+     * Each placeholder's occurrence corresponds to the next argument of the annotated test method
+     * (positional arguments).
+     *
+     * @since 1.0.0
+     */
+    String argumentPlaceholder() default "";
 
     /**
      * Allows to ignore (or not) leading and trailing whitespace characters identified in the argument values.

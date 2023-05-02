@@ -115,6 +115,32 @@ void supportsImplicitArgumentConversions(UUID uuid, LocalDate date, URL url) { .
 
 ## Advanced features
 
+### Using positional arguments syntax
+
+Usually, the order of arguments in the format string follows the order of the test method's parameters. Using the 
+default indexed syntax in the format string (e.g. `{0} -> {1}`) may then feel unnecessarily verbose. In cases like
+these, a fixed placeholder string can be used instead.
+
+Specifying the `argumentPlaceholder` parameter disables the default indexed syntax. Instead, the provided string
+has to be used to represent all the arguments:
+```java
+@FormattedSourceTest(
+    format = "? + ? = ?",
+    argumentPlaceholder = "?",
+    textBlock = """
+        1 + 2 = 3
+        3 + 4 = 7
+        """
+)
+void calculatesSum(int a, int b, int sum) { .. }
+```
+
+Note that in this approach, the order of arguments in the format string has to always match the order of the test
+method's parameters.
+
+As the library does not currently support escaping braces in the format string, the positional argument syntax should be
+considered a recommended alternative.
+
 ### Quoting argument values
 
 Sometimes, test case readability could be improved by quoting specific argument values. By default, you can always use 

@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FormattedSourceAnnotationTest {
+class FormattedSourceIndexedPlaceholdersTest {
 
     @ParameterizedTest(name = "{0} + {1} = {2}")
     @FormattedSource(format = "{0} + {1} = {2}", lines = {
