@@ -23,6 +23,8 @@ public @interface FormattedSource {
      * <p>Setting {@link #argumentPlaceholder()} disables the default behavior, allowing to use a fixed placeholder
      * string instead. As there's no braces (curly brackets) escaping, switching to the fixed argument placeholder
      * allows using them in the format string.</p>
+     *
+     * @return The definition of the arguments format.
      */
     String format();
 
@@ -33,6 +35,8 @@ public @interface FormattedSource {
      *
      * <p>Defaults to an empty string. Note: the test case input must be supplied either via {@link #lines()} or
      * {@link #textBlock()}.</p>
+     *
+     * @return Test case input represented as lines in the defined format.
      */
     String[] lines() default {};
 
@@ -45,6 +49,8 @@ public @interface FormattedSource {
      *
      * <p>Defaults to an empty string. Note: the test case input must be supplied either via {@link #lines()} or
      * {@link #textBlock()}.</p>
+     *
+     * @return Test case input represented as a single Java Text Block.
      */
     String textBlock() default "";
 
@@ -53,6 +59,8 @@ public @interface FormattedSource {
      * As there's no escaping support, a different quote character should be chosen in case of a conflict.
      *
      * <p>Defaults to a single quote ({@code '}).</p>
+     *
+     * @return Arguments quote character.
      */
     char quoteCharacter() default '\'';
 
@@ -62,6 +70,7 @@ public @interface FormattedSource {
      * (positional arguments).
      *
      * @since 1.0.0
+     * @return Custom argument placeholder string.
      */
     String argumentPlaceholder() default "";
 
@@ -69,6 +78,7 @@ public @interface FormattedSource {
      * Allows to ignore (or not) leading and trailing whitespace characters identified in the argument values.
      *
      * <p>Defaults to {@code true}.</p>
+     * @return {@code true} if leading and trailing whitespaces should be ignored, {@code false} otherwise.
      */
     boolean ignoreLeadingAndTrailingWhitespace() default true;
 
@@ -82,6 +92,7 @@ public @interface FormattedSource {
      * {@code null}.</p>
      *
      * <p>Defaults to {@code {}}.</p>
+     * @return A list of strings that should be interpreted as {@code null} references.
      */
     String[] nullValues() default {};
 
@@ -89,6 +100,7 @@ public @interface FormattedSource {
      * A value used to substitute quoted empty strings read from the input.
      *
      * <p>Defaults to empty string ({@code ""}).</p>
+     * @return A value used to substitute quoted empty strings read from the input.
      */
     String emptyValue() default "";
 

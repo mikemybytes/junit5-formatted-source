@@ -246,7 +246,7 @@ void supportsCustomEmptyValue(String str) {
 }
 ```
 
-## Usage ideas (a.k.a the kitchen sink)
+## Usage ideas (aka the kitchen sink)
 
 ### Testing mappers and encoders
 
