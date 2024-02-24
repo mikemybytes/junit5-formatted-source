@@ -9,7 +9,7 @@ function log() {
   echo -e "${purple}${bold}>>> ${1}${normal}"
 }
 
-current_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+current_version=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
 log "Current version: ${current_version}"
 
 next_version=$(echo "${current_version}" | sed 's/-SNAPSHOT//g')
@@ -23,16 +23,16 @@ git add README.md
 git commit -m "docs: [release] Update artifact coordinates (new version ${next_version})"
 
 log "Building with Maven"
-mvn clean verify
+./mvnw clean verify
 
 log "Preparing Maven release"
-mvn --batch-mode release:clean release:prepare
+./mvnw --batch-mode release:clean release:prepare
 
 released_version=$(git describe --abbrev=0 --tags)
 log "Released version: ${released_version}"
 
 log "Cleaning up after Maven release"
-mvn --batch-mode release:clean
+./mvnw --batch-mode release:clean
 
 log "Pushing to git"
 git push origin main
@@ -44,10 +44,10 @@ git checkout --quiet "${released_version}"
 log "Staging artifacts"
 # ensure all artifacts are staged
 # https://jreleaser.org/guide/latest/examples/maven/staging-artifacts.html
-mvn deploy -DaltDeploymentRepository=local::file:./target/staging-deploy
+./mvnw deploy -DaltDeploymentRepository=local::file:./target/staging-deploy
 
 log "Invoking jreleaser"
-mvn -pl :junit5-formatted-source-parent jreleaser:full-release
+./mvnw -pl :junit5-formatted-source-parent jreleaser:full-release
 
 log "Checking out main"
 git checkout main

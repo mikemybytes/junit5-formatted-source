@@ -17,5 +17,5 @@ function log() {
 [ "$#" -eq 1 ] || fail "You must specify a version to run this script"
 
 log "Setting version $1"
-mvn versions:set -DgenerateBackupPoms=false -DnewVersion="$1"
+./mvnw versions:set -DgenerateBackupPoms=false -DnewVersion="$1"
 log "Project version set to $1"

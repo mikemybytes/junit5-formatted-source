@@ -71,7 +71,7 @@
 
         <!-- Enforcer configuration -->
         <enforcer-java-version>(17,)</enforcer-java-version>
-        <enforcer-maven-version>(3.8.1,)</enforcer-maven-version>
+        <enforcer-maven-version>(3.9.0,)</enforcer-maven-version>
     </properties>
 
     <build>
